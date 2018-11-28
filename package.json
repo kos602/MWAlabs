@@ -1,0 +1,26 @@
+{
+  "name": "labs",
+  "version": "1.0.0",
+  "description": "MWA labs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kos602/MWAlabs.git"
+  },
+  "keywords": [
+    "MWA",
+    "labs"
+  ],
+  "author": "kos602",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kos602/MWAlabs/issues"
+  },
+  "homepage": "https://github.com/kos602/MWAlabs#readme",
+  "dependencies": {
+    "rxjs": "^6.3.3"
+  }
+}
