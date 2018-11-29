@@ -13,8 +13,9 @@ dns.resolve4('www.mum.edu', function (err, ret) {
 });
 
 dns.resolve4('www.mum.edu', async function (err, ret) {
-    return await new Promise(function(resolve, reject) {
-        if (err) reject(err);
-        else resolve(ret);
-    }).then(console.log(ret)).catch(err);
+    try {
+        await console.log(ret);
+    } catch (e) {
+        console.log(e)
+    }
 });

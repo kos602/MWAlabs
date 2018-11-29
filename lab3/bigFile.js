@@ -3,7 +3,7 @@ const path = require('path');
 const fs = require('fs');
 
 http.createServer((req, resp)=>{
-    let filePath = path.join(__dirname, './key.pem');
+    let filePath = path.join(__dirname, './big.txt');
 
     /*
     var file = fs.readFileSync(filePath);
