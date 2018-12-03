@@ -22,6 +22,8 @@
   "homepage": "https://github.com/kos602/MWAlabs#readme",
   "dependencies": {
     "express": "^4.16.4",
-    "rxjs": "^6.3.3"
+    "rxjs": "^6.3.3",
+    "sails": "^1.1.0",
+    "yarn": "^1.12.3"
   }
 }
