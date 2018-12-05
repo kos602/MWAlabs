@@ -1,11 +1,21 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+const createError = require('http-errors');
+const express = require('express');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
+const MongoClient = require('mongodb').MongoClient;
+const port = 4000;
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+const dbName = 'mwa';
+const url = `mongodb://localhost:27017`;
+const options = {
+    useNewUrlParser: true,
+    reconnectTries: 60,
+    reconnectInterval: 1000
+};
+
+let indexRouter = require('./routes/index');
+let usersRouter = require('./routes/users');
 
 var app = express();
 
@@ -36,6 +46,17 @@ app.use(function(err, req, res, next) {
   // render the error page
   res.status(err.status || 500);
   res.render('error');
+});
+
+MongoClient.connect(url, options, (err, database) => {
+    if (err) {
+        console.log(`FATAL MONGODB CONNECTION ERROR: ${err}:${err.stack}`);
+        process.exit(1)
+    }
+    app.locals.db = database.db('secret');
+    app.listen(port, () => {
+        console.log("Listening on port %s", port);
+    })
 });
 
 module.exports = app;
