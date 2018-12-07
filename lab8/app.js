@@ -53,7 +53,7 @@ MongoClient.connect(url, options, (err, database) => {
         console.log(`FATAL MONGODB CONNECTION ERROR: ${err}:${err.stack}`);
         process.exit(1)
     }
-    app.locals.db = database.db('secret');
+    app.db = database.db('secret');
     app.listen(port, () => {
         console.log("Listening on port %s", port);
     })
