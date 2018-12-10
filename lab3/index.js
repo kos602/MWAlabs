@@ -9,7 +9,7 @@ dns.resolve4('www.mum.edu', function (err, ret) {
     return new Promise(function(resolve, reject) {
         if (err) reject(err);
         else resolve(ret);
-    }).then(console.log(ret)).catch(err);
+    }).then(ret => console.log(ret)).catch(err);
 });
 
 dns.resolve4('www.mum.edu', async function (err, ret) {
