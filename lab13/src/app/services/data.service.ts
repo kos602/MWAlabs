@@ -8,13 +8,13 @@ import {HttpClient, HttpClientModule} from "@angular/common/http";
 export class DataService {
 
   constructor(private logger: LogService, private http: HttpClient) {
-    this.getUsers().subscribe(res => this.data = res.results);
+    this.getUsers().subscribe(res => this.data = res);
   }
 
-  private data = [];
+  private data = {};
 
   ngOnInit() {
-    this.getUsers().subscribe(res => this.data = res.results);
+    this.getUsers().subscribe(res => this.data = res);
   }
 
   getData() {
