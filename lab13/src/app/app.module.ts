@@ -5,6 +5,12 @@ import { AppComponent } from './app.component';
 import {DataService} from "./services/data.service";
 import {LogService} from "./services/log.service";
 import {HttpClient, HttpClientModule, HttpHandler} from "@angular/common/http";
+import {RouterModule, Routes} from "@angular/router";
+import {UsersModule} from "./modules/users/users.module";
+
+const ROUTES : Routes = [
+  { path: 'users', loadChildren: './modules/users/users.module#UsersModule' }
+];
 
 @NgModule({
   declarations: [
@@ -12,7 +18,9 @@ import {HttpClient, HttpClientModule, HttpHandler} from "@angular/common/http";
   ],
   imports: [
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    UsersModule,
+    RouterModule.forRoot(ROUTES)
   ],
   providers: [],
   bootstrap: [AppComponent]

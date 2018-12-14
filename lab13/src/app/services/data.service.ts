@@ -20,10 +20,17 @@ export class DataService {
     return this.data;
   }
 
-  async getOnlineData() {
-    await this.http.get('https://randomuser.me/api/?results=10')
+  getData() {
+    if (this.data.length === 0) {
+      this.getOnlineData();
+    }
+    return this.getCachedData();
+  }
+
+  getOnlineData() {
+    this.http.get('https://randomuser.me/api/?results=10')
       .subscribe(
-        res => this.data = res.results,
+        res => this.data = res["results"],
         error => console.log(error),
         null
       );

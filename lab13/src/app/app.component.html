@@ -6,7 +6,8 @@
 
 </div>
 <h2>Here are some links to help you start: </h2>
-<ul>
-  <li *ngFor="let user of users">{{user.name}}</li>
-</ul>
+<a [routerLink]="['users']">Users</a>
+<div>
+  <router-outlet></router-outlet>
+</div>
 
