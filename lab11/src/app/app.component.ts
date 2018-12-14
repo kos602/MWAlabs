@@ -11,8 +11,15 @@ export class AppComponent {
 
   public outputData;
 
+  private CounterValue = 0;
+
   showOutputData(data){
     this.outputData = data;
   }
+
+  counterChange(e){
+    this.CounterValue = e;
+  }
+
   title = 'CS 572 MWA';
 }
