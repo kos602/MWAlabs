@@ -8,18 +8,22 @@ import {DataService} from "../../services/data.service";
 import {UserinfoGuard} from "../../guards/userinfo.guard";
 import {UsersComponent} from "./users.component";
 
-const ROUTES:Routes = [
+export const USER_ROUTES: Routes = [
   {path: '', component: UsersComponent },
   {path: 'error', component: NotFoundComponent },
   {path: ':_id', canActivate: [UserinfoGuard], component: UserDetailsComponent }
 ];
 
 @NgModule({
-  declarations: [UsersComponent, NotFoundComponent, UserDetailsComponent],
+  declarations: [
+    UsersComponent,
+    NotFoundComponent,
+    UserDetailsComponent
+  ],
   imports: [
     CommonModule,
     HttpClientModule,
-    RouterModule.forChild(ROUTES)
+    RouterModule
   ],
   providers: [
     DataService,

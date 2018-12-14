@@ -15,7 +15,7 @@ export class UserinfoGuard implements CanActivate {
     const _id = next.params['_id'];
     let users = this.dataService.getData();
 
-    if (users.length !== 0 && users[_id]) {
+    if (users.length !== 0 && users.find(user => user["login"]["uuid"] === _id)) {
       return true;
     } else {
       this.router.navigate(['users','error']);

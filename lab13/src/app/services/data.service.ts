@@ -21,6 +21,7 @@ export class DataService {
   }
 
   getData() {
+    console.log(this.data);
     if (this.data.length === 0) {
       this.getOnlineData();
     }
@@ -28,12 +29,17 @@ export class DataService {
   }
 
   getOnlineData() {
-    this.http.get('https://randomuser.me/api/?results=10')
-      .subscribe(
-        res => this.data = res["results"],
-        error => console.log(error),
-        null
-      );
+    return new Promise((resolve, reject) => {
+      this.http.get('https://randomuser.me/api/?results=10')
+        .subscribe(
+          res => {
+            resolve(res)
+          },
+          error => console.log(error),
+          null
+        )
+    }).then(value => this.data = value["results"])
+
   }
 
 }

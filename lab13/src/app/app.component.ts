@@ -7,13 +7,13 @@ import {DataService} from "./services/data.service";
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  users: object[] = this.data.getData();
+  users: object[];
   constructor(private data: DataService) {
     this.users = this.data.getData();
   }
 
   ngOnInit() {
-    this.users = this.data.getData();
+    this.data.getOnlineData();
   }
 
   title = 'lab13';

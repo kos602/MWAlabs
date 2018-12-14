@@ -1,15 +1,15 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {APP_INITIALIZER, NgModule} from '@angular/core';
 
 import { AppComponent } from './app.component';
+import {HttpClientModule} from "@angular/common/http";
+import {RouterModule, Routes} from "@angular/router";
+import {UsersModule, USER_ROUTES} from "./modules/users/users.module";
 import {DataService} from "./services/data.service";
 import {LogService} from "./services/log.service";
-import {HttpClient, HttpClientModule, HttpHandler} from "@angular/common/http";
-import {RouterModule, Routes} from "@angular/router";
-import {UsersModule} from "./modules/users/users.module";
 
 const ROUTES : Routes = [
-  { path: 'users', loadChildren: './modules/users/users.module#UsersModule' }
+  { path: 'users', children: USER_ROUTES }
 ];
 
 @NgModule({
@@ -22,7 +22,10 @@ const ROUTES : Routes = [
     UsersModule,
     RouterModule.forRoot(ROUTES)
   ],
-  providers: [],
+  providers: [
+    DataService,
+    LogService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
