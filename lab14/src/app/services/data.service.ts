@@ -8,21 +8,25 @@ import {HttpClient, HttpClientModule} from "@angular/common/http";
 export class DataService {
 
   constructor(private logger: LogService, private http: HttpClient) {
-    this.getUsers().subscribe(res => this.data = res);
   }
 
-  private data = {};
+  private data: object[] = [];
 
   ngOnInit() {
-    this.getUsers().subscribe(res => this.data = res);
+    this.getOnlineData();
   }
 
-  getData() {
+  getCachedData() {
     return this.data;
   }
 
-  getUsers() {
-    return this.http.get('https://randomuser.me/api/?results=10');
+  async getOnlineData() {
+    await this.http.get('https://randomuser.me/api/?results=10')
+      .subscribe(
+        res => this.data = res.results,
+        error => console.log(error),
+        null
+      );
   }
 
 }
